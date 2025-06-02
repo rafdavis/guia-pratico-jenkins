@@ -3,15 +3,21 @@ pipeline {
 
     stages {
         stage('Build Docker Image') {
-            sh 'echo "Executando o comando Docker build"'
+            steps {
+                sh 'echo "Executando o comando Docker build"'
+            }
         }
 
         stage('Push Docker Image') {
-            sh 'echo "Executando o comando Docker push"'
+            steps {
+                sh 'echo "Executando o comando Docker push"'
+            }
         }
 
         stage('Deploy no Kubernetes') {
-            sh 'echo "Executando o comando kubectl apply"'
+            steps {
+                sh 'echo "Executando o comando kubectl apply"'
+            }
         }
     }
 }
