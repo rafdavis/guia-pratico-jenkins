@@ -4,19 +4,25 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'echo "Executando o comando Docker build"'
+                script {
+                    dockerbuild = docker.build("ricardodavis/guia-pratico-jenkins:${env.BUILD_ID}", '-f src/Dockerfile ./src')
+                }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                sh 'echo "Executando o comando Docker push"'
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerbuild.push('latest')
+                        dockerbuild.push("${env.BUILD_ID}")
+                     }
+                }
             }
         }
 
         stage('Deploy no Kubernetes') {
             steps {
-                sh 'echo "Executando o comando kubectl apply"'
             }
         }
     }
