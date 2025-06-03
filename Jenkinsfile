@@ -5,7 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerbuild = docker.build("ricardodavis/guia-pratico-jenkins:${env.BUILD_ID}", '-f src/Dockerfile ./src')
+                    dockerbuild = docker.build("rafdavis/guia-pratico-jenkins:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')
                 }
             }
         }
