@@ -13,7 +13,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         dockerbuild.push('latest')
                         dockerbuild.push("${env.BUILD_ID}")
                      }
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy no Kubernetes') {
             steps {
-                 sh 'echo "Executando comando kubectl apply'
+                sh 'echo "Executando comando kubectl apply'
                 }
             }
         }
