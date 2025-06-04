@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: conversao-temperatura
+  name: api-simples
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: conversao-temperatura
+      app: api-simples
   template:
     metadata:
       labels:
-        app: conversao-temperatura
+        app: api-simples
     spec:
       containers:
-      - name: conversao-temperatura
-        image: fabricioveronez/live-jenkins
+      - name: api-simples
+        image: rafdavis/guia-jenkins:{{tag}}
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: conversao-temperatura
+  name: api-simples
 spec:
   selector:
-    app: conversao-temperatura
+    app: api-simples
   ports:
   - port: 80
     targetPort: 8080
