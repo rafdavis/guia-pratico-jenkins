@@ -16,4 +16,4 @@ spec:
         - name: api-simples
           image: rafdavis/guia-jenkins:{{tag}}
           ports:
-            - containerPort: 8080
+            - containerPort: 4000
