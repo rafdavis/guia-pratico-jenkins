@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send("Teste API v4");
+  res.send("Teste API v5");
 });
 
 const port = 4000;
